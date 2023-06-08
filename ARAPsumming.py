@@ -34,7 +34,7 @@ def excelsumming(filename):
 def main():#遍历文件夹“文件源”里的文件汇总
     filenames=os.listdir(r"数据源")
     for filename in filenames:
-        excelsumming(r"数据源/%s"%filename)
-        print(filename)
-
+        if filename[-5:]==".xlsx":#确保只汇总xlsx文件
+            excelsumming(r"数据源/%s"%filename)
+            print(filename)
 main()
