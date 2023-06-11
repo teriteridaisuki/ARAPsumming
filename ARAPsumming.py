@@ -17,17 +17,18 @@ def excelsumming(filename):
     for row in range(2,SubAR.max_row+1):
         if (SubAR.cell(row, 2).value==''or SubAR.cell(row, 2).value==None):
             continue
-        for col in range(2, 16):
+        for col in list(range(2, 16))+[29]:
             MainWorkSheet_AR.cell(CurrentARrow,col).value=SubAR.cell(row,col).value
         MainWorkSheet_AR.cell(CurrentARrow, 1).value = CurrentARrow-1
-        MainWorkSheet_AR.cell(CurrentARrow, 29).value = SubAR.cell(row, 29).value
+        MainWorkSheet_AR.cell(CurrentARrow, 2).value = int(SubAR.cell(row, 2).value)
         CurrentARrow+=1
     for row in range(2,SubAP.max_row+1):
         if (SubAP.cell(row, 2).value==''or SubAP.cell(row, 2).value==None):
             continue
-        for col in range(2, 12):
+        for col in range(3, 12):
             MainWorkSheet_AP.cell(CurrentAProw,col).value=SubAP.cell(row,col).value
         MainWorkSheet_AP.cell(CurrentAProw, 1).value = CurrentAProw-1
+        MainWorkSheet_AP.cell(CurrentAProw, 2).value = int(SubAP.cell(row,2).value)
         CurrentAProw+=1
     MainWorkBook.save(MainWorkBook_name+"完成.xlsx")
 
